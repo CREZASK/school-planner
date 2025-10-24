@@ -32,7 +32,7 @@ export default function HomePage() {
       <Navbar />
 
       {/* Sections */}
-      <div className="flex flex-col gap-10 p-8 max-w-6xl mx-auto">
+      <div className="flex flex-col gap-10 py-15 px-30 w-full mx-auto">
         {sections.map((s, i) => (
           <div
             key={i}
@@ -40,20 +40,20 @@ export default function HomePage() {
               i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
             } items-center gap-4`}
           >
-            <div className="flex-1 bg-[#1D3C6A] rounded-2xl h-[200px] flex justify-center items-center text-center text-lg font-semibold">
-              {s.title}
-            </div>
-            <div className="flex-1">
-              <Link href={s.link}>
-                <Image
-                  src={s.img}
-                  alt={s.title}
-                  width={600}
-                  height={400}
-                  className="rounded-2xl object-cover w-full h-[200px]"
-                />
-              </Link>
-            </div>
+            <Link href={s.link} className="flex-1">
+              <div className="bg-[#1D3C6A] rounded-2xl h-[200px] flex justify-center items-center text-center text-lg font-semibold">
+                {s.title}
+              </div>
+            </Link>
+            <Link href={s.link}>
+              <Image
+                src={s.img}
+                alt={s.title}
+                width={600}
+                height={400}
+                className="rounded-2xl object-cover w-full h-[200px]"
+              />
+            </Link>
           </div>
         ))}
       </div>

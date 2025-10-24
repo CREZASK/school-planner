@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import { Navbar } from "../Navbar";
+import { useState } from "react";
 
 export default function RoomManagementPage() {
   // Dummy data — replace with your real data later
@@ -20,6 +23,13 @@ export default function RoomManagementPage() {
       fach: "Deutsch",
     },
   ];
+
+  const [query, setQuery] = useState("");
+
+  // Filter rooms based on search query
+  const filtered = rooms.filter((room) =>
+    room.name.toLowerCase().includes(query.toLowerCase())
+  );
 
   return (
     <main className="w-full min-h-screen bg-[#F3EED9] text-black">
@@ -49,6 +59,8 @@ export default function RoomManagementPage() {
           <input
             type="text"
             placeholder="Suchen..."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
             className="w-full md:w-1/2 bg-gray-200 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[#1D3C6A]"
           />
           {/* filter Section */}
@@ -72,22 +84,26 @@ export default function RoomManagementPage() {
 
         {/* List of Rooms */}
         <div className="flex flex-col gap-8">
-          {rooms.map((room) => (
-            <div
-              key={room.id}
-              className="flex items-center gap-6 bg-[#F3EED9] rounded-lg border-b border-gray-300 pb-4"
-            >
-              {/* Placeholder Image */}
-              <div className="w-28 h-28 bg-gray-300 rounded-md flex-shrink-0"></div>
+          {filtered.length > 0 ? (
+            filtered.map((room) => (
+              <div
+                key={room.id}
+                className="flex items-center gap-6 bg-[#F3EED9] rounded-lg border-b border-gray-300 pb-4"
+              >
+                {/* Placeholder Image */}
+                <div className="w-28 h-28 bg-gray-300 rounded-md flex-shrink-0"></div>
 
-              {/* Info */}
-              <div>
-                <p className="font-bold">{room.name}</p>
-                <p className="text-sm text-gray-700">{room.email}</p>
-                <p className="text-sm font-medium">{room.fach}</p>
+                {/* Info */}
+                <div>
+                  <p className="font-bold">{room.name}</p>
+                  <p className="text-sm text-gray-700">{room.email}</p>
+                  <p className="text-sm font-medium">{room.fach}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          ) : (
+            <p className="text-gray-600">No results found.</p>
+          )}
         </div>
       </section>
     </main>

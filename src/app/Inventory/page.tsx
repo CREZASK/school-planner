@@ -1,15 +1,25 @@
+"use client";
+
 import Image from "next/image";
 import { Navbar } from "../Navbar";
+import { useState } from "react";
 
 export default function RoomManagementPage() {
   // Dummy data — replace with your real data later
   const rooms = [
     { id: 1, name: "Tables", Amount: "10" },
-    { id: 1, name: "Chairs", Amount: "20" },
-    { id: 1, name: "Cupboards", Amount: "30" },
-    { id: 1, name: "Laptops", Amount: "100" },
-    { id: 1, name: "Monitors", Amount: "50" },
+    { id: 2, name: "Chairs", Amount: "20" },
+    { id: 3, name: "Cupboards", Amount: "30" },
+    { id: 4, name: "Laptops", Amount: "100" },
+    { id: 5, name: "Monitors", Amount: "50" },
   ];
+
+  const [query, setQuery] = useState("");
+
+  // Filter rooms based on search query
+  const filtered = rooms.filter((room) =>
+    room.name.toLowerCase().includes(query.toLowerCase())
+  );
 
   return (
     <main className="w-full min-h-screen bg-[#F3EED9] text-black">
@@ -36,22 +46,29 @@ export default function RoomManagementPage() {
         {/* Search Bar */}
         <div className="mb-10">
           <label className="block mb-2 font-semibold">Search</label>
-          <input
-            type="text"
-            placeholder="Suchen..."
-            className="w-full md:w-1/2 bg-gray-200 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[#1D3C6A]"
-          />
-          {/* filter Section */}
+          <div className="flex gap-5 items-center">
+            <input
+              type="text"
+              placeholder="Suchen..."
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              className="w-full md:w-1/2 bg-gray-200 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[#1D3C6A]"
+            />
+            <button type="button">
+              <Image alt="search" src="/search.png" width={25} height={25} />
+            </button>
+          </div>
 
+          {/* Filter Section */}
           <div className="flex space-x-6 mt-6">
-            <a className="bg-[#1D3C6A] text-white px-4 py-2 rounded-md hover:bg-[#16325A] transition">
+            <button className="bg-[#1D3C6A] text-white px-4 py-2 rounded-md hover:bg-[#16325A] transition">
               Filter
-            </a>
+            </button>
             {["Raum", "Gebäude"].map((g) => (
               <label key={g} className="flex items-center space-x-2 text-sm">
                 <input
                   type="radio"
-                  name="Raum"
+                  name="filter"
                   className="accent-[var(--color-accent)]"
                 />
                 <span>{g}</span>
@@ -60,23 +77,27 @@ export default function RoomManagementPage() {
           </div>
         </div>
 
-        {/* List of Rooms */}
+        {/* List of Rooms (Filtered) */}
         <div className="flex flex-col gap-8">
-          {rooms.map((room) => (
-            <div
-              key={room.id}
-              className="flex items-center gap-6 bg-[#F3EED9] rounded-lg border-b border-gray-300 pb-4"
-            >
-              {/* Placeholder Image */}
-              <div className="w-28 h-28 bg-gray-300 rounded-md flex-shrink-0"></div>
+          {filtered.length > 0 ? (
+            filtered.map((room) => (
+              <div
+                key={room.id}
+                className="flex items-center gap-6 bg-[#F3EED9] rounded-lg border-b border-gray-300 pb-4"
+              >
+                {/* Placeholder Image */}
+                <div className="w-28 h-28 bg-gray-300 rounded-md flex-shrink-0"></div>
 
-              {/* Info */}
-              <div>
-                <p className="font-bold">{room.name}</p>
-                <p className="text-sm text-gray-700">{room.Amount}</p>
+                {/* Info */}
+                <div>
+                  <p className="font-bold">{room.name}</p>
+                  <p className="text-sm text-gray-700">{room.Amount}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          ) : (
+            <p className="text-gray-600">No results found.</p>
+          )}
         </div>
       </section>
     </main>

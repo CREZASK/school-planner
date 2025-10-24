@@ -4,11 +4,21 @@ import { Navbar } from "../Navbar";
 export default function RoomManagementPage() {
   // Dummy data — replace with your real data later
   const rooms = [
-    { id: 1, name: "Raum 101", gebäude: "xyz", fach: "Mathematik" },
-    { id: 2, name: "Raum 102", gebäude: "xyz", fach: "Physik" },
-    { id: 3, name: "Raum 103", gebäude: "xyz", fach: "Chemie" },
-    { id: 4, name: "Raum 104", gebäude: "xyz", fach: "Biologie" },
-    { id: 5, name: "Raum 105", gebäude: "xyz", fach: "Deutsch" },
+    {
+      id: 1,
+      name: "Schneider Holz",
+      email: "info@classdex.de",
+      fach: "Mathematik",
+    },
+    { id: 2, name: "Gerd Lichten", email: "info@classdex.de", fach: "Physik" },
+    { id: 3, name: "Moira Rampau", email: "info@classdex.de", fach: "Chemie" },
+    { id: 4, name: "Jerald Max", email: "info@classdex.de", fach: "Biologie" },
+    {
+      id: 5,
+      name: "Maximus Meridious Desimus",
+      email: "info@classdex.de",
+      fach: "Deutsch",
+    },
   ];
 
   return (
@@ -18,15 +28,15 @@ export default function RoomManagementPage() {
       {/* Hero Section */}
       <section className="relative w-full h-[400px]">
         <Image
-          src="/räüme-sample.jpg"
-          alt="Räume Verwaltung"
+          src="/student-sample.jpg"
+          alt="Student Verwaltung"
           fill
           className="object-cover brightness-75"
           priority
         />
         <div className="absolute inset-0 flex items-center justify-center">
           <h1 className="text-5xl md:text-6xl font-bold text-white text-center drop-shadow-lg">
-            Räume Verwaltung
+            Student Verwaltung
           </h1>
         </div>
       </section>
@@ -47,7 +57,7 @@ export default function RoomManagementPage() {
             <a className="bg-[#1D3C6A] text-white px-4 py-2 rounded-md hover:bg-[#16325A] transition">
               Filter
             </a>
-            {["Raum", "Gebäude"].map((g) => (
+            {["Fach", "A-Z"].map((g) => (
               <label key={g} className="flex items-center space-x-2 text-sm">
                 <input
                   type="radio"
@@ -73,7 +83,7 @@ export default function RoomManagementPage() {
               {/* Info */}
               <div>
                 <p className="font-bold">{room.name}</p>
-                <p className="text-sm text-gray-700">{room.gebäude}</p>
+                <p className="text-sm text-gray-700">{room.email}</p>
                 <p className="text-sm font-medium">{room.fach}</p>
               </div>
             </div>

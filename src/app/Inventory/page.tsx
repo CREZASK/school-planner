@@ -4,11 +4,11 @@ import { Navbar } from "../Navbar";
 export default function RoomManagementPage() {
   // Dummy data — replace with your real data later
   const rooms = [
-    { id: 1, name: "Raum 101", gebäude: "xyz", fach: "Mathematik" },
-    { id: 2, name: "Raum 102", gebäude: "xyz", fach: "Physik" },
-    { id: 3, name: "Raum 103", gebäude: "xyz", fach: "Chemie" },
-    { id: 4, name: "Raum 104", gebäude: "xyz", fach: "Biologie" },
-    { id: 5, name: "Raum 105", gebäude: "xyz", fach: "Deutsch" },
+    { id: 1, name: "Tables", Amount: "10" },
+    { id: 1, name: "Chairs", Amount: "20" },
+    { id: 1, name: "Cupboards", Amount: "30" },
+    { id: 1, name: "Laptops", Amount: "100" },
+    { id: 1, name: "Monitors", Amount: "50" },
   ];
 
   return (
@@ -18,15 +18,15 @@ export default function RoomManagementPage() {
       {/* Hero Section */}
       <section className="relative w-full h-[400px]">
         <Image
-          src="/räüme-sample.jpg"
-          alt="Räume Verwaltung"
+          src="/inventory.jpeg"
+          alt="inventory"
           fill
           className="object-cover brightness-75"
           priority
         />
         <div className="absolute inset-0 flex items-center justify-center">
           <h1 className="text-5xl md:text-6xl font-bold text-white text-center drop-shadow-lg">
-            Räume Verwaltung
+            Inventory
           </h1>
         </div>
       </section>
@@ -73,8 +73,7 @@ export default function RoomManagementPage() {
               {/* Info */}
               <div>
                 <p className="font-bold">{room.name}</p>
-                <p className="text-sm text-gray-700">{room.gebäude}</p>
-                <p className="text-sm font-medium">{room.fach}</p>
+                <p className="text-sm text-gray-700">{room.Amount}</p>
               </div>
             </div>
           ))}

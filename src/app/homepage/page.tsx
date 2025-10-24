@@ -1,46 +1,35 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Navbar } from "../Navbar";
+import { link } from "fs";
 
 const sections = [
   {
     title: "Räume Verwaltung",
     img: "/räüme-sample.jpg",
+    link: "/Rooms",
   },
   {
     title: "Personal Verwaltung",
     img: "/personal.png",
+    link: "/Personal",
   },
   {
     title: "Student Verwaltung",
     img: "/student-sample.jpg",
+    link: "/Student",
   },
   {
     title: "Inventory",
     img: "/inventory.jpeg",
+    link: "/Inventory",
   },
 ];
 
 export default function HomePage() {
   return (
     <main className="w-full min-h-screen bg-[#F3EED9] text-[#F3EED9] flex flex-col">
-      {/* Header */}
-      <header className="flex justify-between items-center px-8 py-4">
-        <Image className="" src="/logo.png" alt="Logo" width={32} height={32} />
-        <div className="flex gap-6 justify-center">
-          <a
-            href="/homepage"
-            className="text-sm font-medium text-black hover:underline"
-          >
-            HOME
-          </a>
-          <a
-            href="/logout"
-            className="text-sm font-medium text-black hover:underline"
-          >
-            SIGN OUT
-          </a>
-        </div>
-      </header>
+      <Navbar />
 
       {/* Sections */}
       <div className="flex flex-col gap-10 p-8 max-w-6xl mx-auto">
@@ -55,7 +44,7 @@ export default function HomePage() {
               {s.title}
             </div>
             <div className="flex-1">
-              <Link href="/Rooms">
+              <Link href={s.link}>
                 <Image
                   src={s.img}
                   alt={s.title}

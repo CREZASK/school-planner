@@ -7,9 +7,9 @@ import Link from "next/link";
 
 export default function RegisterPage() {
   return (
-    <div className="bg-[var(--color-bg)] rounded-3xl w-[90%] md:w-[80%] lg:w-[70%] xl:w-[60%] p-10 flex flex-col md:flex-row justify-between items-center shadow-xl">
+    <div className="bg-(--color-bg) rounded-3xl w-[90%] md:w-[80%] lg:w-[70%] xl:w-[60%] p-10 flex flex-col md:flex-row justify-between items-center shadow-xl">
       {/* Left side */}
-      <div className="text-[var(--color-primary)] text-center md:text-left font-bold text-3xl md:text-4xl lg:text-5xl w-full md:w-1/2">
+      <div className="text-(--color-primary) text-center md:text-left font-bold text-3xl md:text-4xl lg:text-5xl w-full md:w-1/2">
         <p>
           Wilkommen
           <br />
@@ -21,7 +21,7 @@ export default function RegisterPage() {
 
       {/* Right side */}
       <div className="w-full md:w-1/2 mt-8 md:mt-0">
-        <h2 className="text-[var(--color-primary)] font-bold text-2xl mb-6 text-center">
+        <h2 className="text-(--color-primary) font-bold text-2xl mb-6 text-center">
           Registrierung
         </h2>
 
@@ -71,7 +71,7 @@ export default function RegisterPage() {
               <input
                 type="radio"
                 name="gender"
-                className="accent-[var(--color-accent)]"
+                className="accent-(--color-accent)"
               />
               <span>{g}</span>
             </label>
@@ -82,7 +82,7 @@ export default function RegisterPage() {
           <Button
             asChild
             type="button"
-            className="bg-[var(--color-accent)] hover:bg-[var(--color-accent)]/90 shadow-md px-6 py-2 rounded-none"
+            className="bg-(--color-accent) hover:bg-accent/90 shadow-md px-6 py-2 rounded-none"
           >
             <Link href="/">Stornieren</Link>
           </Button>
@@ -90,7 +90,7 @@ export default function RegisterPage() {
           <Button
             asChild
             type="submit"
-            className="bg-[var(--color-accent)] hover:bg-[var(--color-accent)]/90 shadow-md px-6 py-2 rounded-none"
+            className="bg-(--color-accent) hover:bg-accent/90 shadow-md px-6 py-2 rounded-none"
           >
             <Link href="/login">Weitergehen</Link>
           </Button>

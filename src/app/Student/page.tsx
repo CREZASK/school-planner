@@ -125,7 +125,7 @@ export default function RoomManagementPage() {
                 className="flex items-center gap-6 bg-[#F3EED9] rounded-lg border-b border-gray-300 pb-4"
               >
                 {/* Placeholder Image */}
-                <div className="w-28 h-28 bg-gray-300 rounded-md flex-shrink-0"></div>
+                <div className="w-28 h-28 bg-gray-300 rounded-md shrink-0"></div>
 
                 {/* Info */}
                 <div>

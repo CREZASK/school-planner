@@ -25,11 +25,23 @@ export default function RoomManagementPage() {
   ];
 
   const [query, setQuery] = useState("");
+  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
+  const [filterField, setFilterField] = useState<"name" | "amount">("name");
 
   // Filter rooms based on search query
-  const filtered = rooms.filter((room) =>
-    room.name.toLowerCase().includes(query.toLowerCase())
-  );
+  const filtered = rooms
+    .filter((room) => {
+      if (!query) return true;
+      if (filterField === "name") {
+        return room.name.toLowerCase().includes(query.toLowerCase());
+      } else {
+        return room.fach.toLowerCase().includes(query.toLowerCase());
+      }
+    })
+    .sort((a, b) => {
+      if (sortOrder === "asc") return a.name.localeCompare(b.name);
+      else return b.name.localeCompare(a.name);
+    });
 
   return (
     <main className="w-full min-h-screen bg-[#F3EED9] text-black">
@@ -64,21 +76,40 @@ export default function RoomManagementPage() {
             className="w-full md:w-1/2 bg-gray-200 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[#1D3C6A]"
           />
           {/* filter Section */}
-
-          <div className="flex space-x-6 mt-6">
-            <a className="bg-[#1D3C6A] text-white px-4 py-2 rounded-md hover:bg-[#16325A] transition">
-              Filter
-            </a>
-            {["Raum", "Gebäude"].map((g) => (
-              <label key={g} className="flex items-center space-x-2 text-sm">
+          <div className="flex flex-wrap items-center gap-6">
+            <span className="font-semibold">Filter by:</span>
+            {[
+              { label: "Name", value: "name" },
+              { label: "Fach", value: "fach" },
+            ].map((f) => (
+              <label
+                key={f.value}
+                className="flex items-center space-x-2 text-sm"
+              >
                 <input
                   type="radio"
-                  name="Raum"
-                  className="accent-[var(--color-accent)]"
+                  name="filterField"
+                  value={f.value}
+                  checked={filterField === f.value}
+                  onChange={() => setFilterField(f.value as "name" | "amount")}
+                  className="accent-[#1D3C6A]"
                 />
-                <span>{g}</span>
+                <span>{f.label}</span>
               </label>
             ))}
+          </div>
+
+          {/* Sort Dropdown */}
+          <div className="flex items-center space-x-3 py-3">
+            <span className="font-semibold">Sort:</span>
+            <select
+              value={sortOrder}
+              onChange={(e) => setSortOrder(e.target.value as "asc" | "desc")}
+              className="bg-gray-200 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[#1D3C6A]"
+            >
+              <option value="asc">A–Z</option>
+              <option value="desc">Z–A</option>
+            </select>
           </div>
         </div>
 
@@ -91,7 +122,7 @@ export default function RoomManagementPage() {
                 className="flex items-center gap-6 bg-[#F3EED9] rounded-lg border-b border-gray-300 pb-4"
               >
                 {/* Placeholder Image */}
-                <div className="w-28 h-28 bg-gray-300 rounded-md flex-shrink-0"></div>
+                <div className="w-28 h-28 bg-gray-300 rounded-md shrink-0"></div>
 
                 {/* Info */}
                 <div>

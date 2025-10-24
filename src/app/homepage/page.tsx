@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const sections = [
   {
@@ -21,18 +22,24 @@ const sections = [
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-[#F3EED9] text-[#F3EED9] flex flex-col">
+    <main className="w-full min-h-screen bg-[#F3EED9] text-[#F3EED9] flex flex-col">
       {/* Header */}
       <header className="flex justify-between items-center px-8 py-4">
-        <a href="/" className="text-sm font-medium text-black hover:underline">
-          HOME
-        </a>
-        <a
-          href="/logout"
-          className="text-sm font-medium text-black hover:underline"
-        >
-          SIGN OUT
-        </a>
+        <Image className="" src="/logo.png" alt="Logo" width={32} height={32} />
+        <div className="flex gap-6 justify-center">
+          <a
+            href="/homepage"
+            className="text-sm font-medium text-black hover:underline"
+          >
+            HOME
+          </a>
+          <a
+            href="/logout"
+            className="text-sm font-medium text-black hover:underline"
+          >
+            SIGN OUT
+          </a>
+        </div>
       </header>
 
       {/* Sections */}
@@ -48,13 +55,15 @@ export default function HomePage() {
               {s.title}
             </div>
             <div className="flex-1">
-              <Image
-                src={s.img}
-                alt={s.title}
-                width={600}
-                height={400}
-                className="rounded-2xl object-cover w-full h-[200px]"
-              />
+              <Link href="/Rooms">
+                <Image
+                  src={s.img}
+                  alt={s.title}
+                  width={600}
+                  height={400}
+                  className="rounded-2xl object-cover w-full h-[200px]"
+                />
+              </Link>
             </div>
           </div>
         ))}

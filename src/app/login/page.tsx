@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function LoginPage() {
   return (
-    <div className="bg-[var(--color-bg)] rounded-3xl w-full md:w-full lg:w-full xl:w-full flex flex-col md:flex-row justify-between items-center shadow-xl">
+    <div className="bg-[var(--color-bg)] rounded-3xl w-[90%] md:w-[80%] lg:w-[70%] xl:w-[60%] p-10 flex flex-col md:flex-row justify-between items-center shadow-xl">
       {/* Left side */}
       <div className="text-[var(--color-primary)] text-center md:text-left font-bold text-3xl md:text-4xl lg:text-5xl w-full md:w-1/2">
         <p>

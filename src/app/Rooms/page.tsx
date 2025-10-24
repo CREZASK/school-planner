@@ -11,11 +11,11 @@ export default function RoomManagementPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#F3EED9] text-black">
+    <main className="w-full min-h-screen bg-[#F3EED9] text-black">
       {/* Header */}
       <header className="flex justify-between items-center px-8 py-4">
         <Image
-          src="/logo.svg"
+          src="/logo.png"
           alt="logo"
           width={40}
           height={40}
@@ -34,7 +34,7 @@ export default function RoomManagementPage() {
       {/* Hero Section */}
       <section className="relative w-full h-[400px]">
         <Image
-          src="/classroom.jpg"
+          src="/räüme-sample.jpg"
           alt="Räume Verwaltung"
           fill
           className="object-cover brightness-75"
@@ -57,6 +57,23 @@ export default function RoomManagementPage() {
             placeholder="Suchen..."
             className="w-full md:w-1/2 bg-gray-200 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[#1D3C6A]"
           />
+          {/* filter Section */}
+
+          <div className="flex space-x-6 mt-6">
+            <a className="bg-[#1D3C6A] text-white px-4 py-2 rounded-md hover:bg-[#16325A] transition">
+              Filter
+            </a>
+            {["Raum", "Gebäude"].map((g) => (
+              <label key={g} className="flex items-center space-x-2 text-sm">
+                <input
+                  type="radio"
+                  name="Raum"
+                  className="accent-[var(--color-accent)]"
+                />
+                <span>{g}</span>
+              </label>
+            ))}
+          </div>
         </div>
 
         {/* List of Rooms */}

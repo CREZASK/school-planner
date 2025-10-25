@@ -28,11 +28,11 @@ const sections = [
 
 export default function HomePage() {
   return (
-    <main className="w-full min-h-screen bg-[#F3EED9] text-[#F3EED9] flex flex-col">
+    <main className="w-full min-h-screen bg-[#954C2E] text-[#F3EED9] flex flex-col">
       <Navbar />
 
       {/* Sections */}
-      <div className="flex flex-col gap-10 py-15 px-30 w-full mx-auto">
+      <div className="flex flex-col gap-20 py-15 px-30 w-full mx-auto">
         {sections.map((s, i) => (
           <div
             key={i}
@@ -41,7 +41,7 @@ export default function HomePage() {
             } items-center gap-4`}
           >
             <Link href={s.link} className="flex-1">
-              <div className="bg-[#1D3C6A] rounded-2xl h-[200px] flex justify-center items-center text-center text-lg font-semibold">
+              <div className="bg-[#1D3C6A] rounded-2xl text-4xl h-[200px] flex justify-center items-center text-center font-semibold">
                 {s.title}
               </div>
             </Link>

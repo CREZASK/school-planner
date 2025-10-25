@@ -77,6 +77,12 @@ export default function RoomManagementPage() {
               onChange={(e) => setQuery(e.target.value)}
               className="w-full md:w-1/2 bg-gray-200 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[#1D3C6A]"
             />
+            <a
+              className="bg-[#954C2E] p-3 ml-30 rounded text-white font-semibold"
+              href="/Student/add"
+            >
+              Neue Student?
+            </a>
           </div>
           {/* filter Section */}
           <div className="flex flex-wrap items-center gap-6">

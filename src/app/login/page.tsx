@@ -13,9 +13,7 @@ export default function LoginPage() {
         <p>
           Wilkommen
           <br />
-          bei unsere
-          <br />
-          Website
+          bei ClassDex
         </p>
       </div>
 

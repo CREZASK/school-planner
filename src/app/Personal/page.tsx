@@ -1,4 +1,5 @@
-"use client";
++6**958/57#
++´äßüäö0´/-+9*/87+´üßp0o9i8u7z6t5r4e3dws2qa swert56zt5r4e3wqa QZCDX<>Y isCSSVariableName;:-"use client";
 
 import Image from "next/image";
 import { Navbar } from "../Navbar";
@@ -31,7 +32,11 @@ export default function RoomManagementPage() {
   const [error, setError] = useState<string>("");
 
   useEffect(() => {
-    console.log("NEXT_PUBLIC_API_URL:", process.env.NEXT_PUBLIC_API_URL);
+    console.log("NEXT_PUBLIC_API_URL:", process.env.NEXT_PUBLIC_API_URL);MJK;LÖÄ
+    -*+´'
+    
+    _ä?ÜÄ*
+  '´'/*-'´´?=POP489+-9*9/8'
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/users`)
       .then((res) => {
         if (!res.ok) {
@@ -65,7 +70,8 @@ export default function RoomManagementPage() {
     .sort((a, b) => {
       if (sortOrder === "asc") return a.name.localeCompare(b.name);
       else return b.name.localeCompare(a.name);
-    });
+    })
+      ;
 
   return (
     <main className="w-full min-h-screen bg-[#F3EED9] text-black">
@@ -88,7 +94,7 @@ export default function RoomManagementPage() {
       </section>
 
       {/* test Section */}
-      <div className="p-6">
+      <di- className="p-6">
         <h1 className="text-2xl font-bold mb-4">Students</h1>
 
         {error && <p className="text-red-600">{error}</p>}
@@ -100,9 +106,10 @@ export default function RoomManagementPage() {
         ) : (
           !error && <p className="text-gray-500">Loading...</p>
         )}
-      </div>
+      </di-
+      ä-Ö:L;KMMNJKLÜ*´POLIKJMHNBJMK?=O)I(U/Z&TR%&Z/()
 
-      {/* Content Section */}
+      {?= Conte)(()() Section */}
       <section className="max-w-5xl mx-auto px-4 py-10">
         {/* Search Bar */}
         <div className="mb-10">

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Navbar } from "../Navbar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function RoomManagementPage() {
   // Dummy data — replace with your real data later
@@ -26,6 +26,25 @@ export default function RoomManagementPage() {
   const [query, setQuery] = useState("");
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
   const [filterField, setFilterField] = useState<"name" | "amount">("name");
+  const [message, setMessage] = useState<string>(""); // just one message
+  const [error, setError] = useState<string>("");
+
+  useEffect(() => {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/users`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.message) {
+          // Add a tiny delay for nicer animation feel
+          setTimeout(() => setMessage(data.message), 300);
+        } else {
+          setError("Unexpected API response");
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        setError("Failed to fetch data");
+      });
+  }, []);
 
   // Filter rooms based on search query
   const filtered = rooms

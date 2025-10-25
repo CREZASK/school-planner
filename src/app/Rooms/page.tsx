@@ -7,12 +7,12 @@ import { useState } from "react";
 export default function RoomManagementPage() {
   // Dummy data — replace with your real data later
   const rooms = [
-    { id: 1, name: "Raum 101", gebäude: "xyz", fach: "Mathematik" },
-    { id: 2, name: "Raum 102", gebäude: "xdz", fach: "Physik" },
-    { id: 3, name: "Raum 103", gebäude: "xyz", fach: "Chemie" },
-    { id: 4, name: "Raum 104", gebäude: "xsyz", fach: "Biologie" },
-    { id: 5, name: "Raum 105", gebäude: "xyfz", fach: "Deutsch" },
-    { id: 5, name: "Bibliothek", gebäude: "xyz", fach: "None" },
+    { id: 1, name: "Raum 101", gebäude: "pti", fach: "Mathematik" },
+    { id: 2, name: "Raum 102", gebäude: "edu", fach: "Physik" },
+    { id: 3, name: "Raum 103", gebäude: "pti", fach: "Chemie" },
+    { id: 4, name: "Raum 104", gebäude: "elc", fach: "Biologie" },
+    { id: 5, name: "Raum 105", gebäude: "elc", fach: "Deutsch" },
+    { id: 6, name: "Bibliothek", gebäude: "pti", fach: "None" },
   ];
 
   const [query, setQuery] = useState("");
@@ -68,6 +68,12 @@ export default function RoomManagementPage() {
               onChange={(e) => setQuery(e.target.value)}
               className="w-full md:w-1/2 bg-gray-200 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[#1D3C6A]"
             />
+            <a
+              href="/Inventory/add"
+              className="bg-[#A3502D] hover:bg-[#8B3F22] ml-50 px-6 py-3 rounded text-white font-semibold transition"
+            >
+              neue Raum?
+            </a>
             <div />
             {/* filter Section */}
 

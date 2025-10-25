@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Navbar } from "../Navbar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function RoomManagementPage() {
   // Dummy data — replace with your real data later
@@ -27,6 +27,30 @@ export default function RoomManagementPage() {
   const [query, setQuery] = useState("");
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
   const [filterField, setFilterField] = useState<"name" | "amount">("name");
+  const [message, setMessage] = useState<string>(""); // just one message
+  const [error, setError] = useState<string>("");
+
+  useEffect(() => {
+    console.log("NEXT_PUBLIC_API_URL:", process.env.NEXT_PUBLIC_API_URL);
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/users`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      })
+      .then((data) => {
+        if (data.message) {
+          setMessage(data.message);
+        } else {
+          setError("Unexpected API response");
+        }
+      })
+      .catch((err) => {
+        console.error("Fetch error:", err);
+        setError(`Failed to fetch data: ${err.message}`);
+      });
+  }, []);
 
   // Filter rooms based on search query
   const filtered = rooms
@@ -62,6 +86,21 @@ export default function RoomManagementPage() {
           </h1>
         </div>
       </section>
+
+      {/* test Section */}
+      <div className="p-6">
+        <h1 className="text-2xl font-bold mb-4">Students</h1>
+
+        {error && <p className="text-red-600">{error}</p>}
+
+        {message ? (
+          <div className="border p-3 rounded bg-green-50 text-green-800">
+            {message}
+          </div>
+        ) : (
+          !error && <p className="text-gray-500">Loading...</p>
+        )}
+      </div>
 
       {/* Content Section */}
       <section className="max-w-5xl mx-auto px-4 py-10">

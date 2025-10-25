@@ -17,14 +17,6 @@ export default function RoomManagementPage() {
   const [query, setQuery] = useState("");
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
   const [filterField, setFilterField] = useState<"name" | "amount">("name");
-  const [students, setStudents] = useState<any[]>([]);
-
-  useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/getStudents.php`)
-      .then((res) => res.json())
-      .then(setStudents)
-      .catch(console.error);
-  }, []);
 
   // Filter rooms based on search query
   const filtered = rooms
@@ -61,18 +53,6 @@ export default function RoomManagementPage() {
         </div>
       </section>
 
-      {/* Students test api call */}
-      <div className="p-6">
-        <h1 className="text-2xl font-bold mb-4">Students</h1>
-        <ul className="space-y-2">
-          {students.map((s) => (
-            <li key={s.id} className="border p-2 rounded">
-              {s.name} — {s.grade}
-            </li>
-          ))}
-        </ul>
-      </div>
-
       {/* Content Section */}
       <section className="max-w-5xl mx-auto px-4 py-10">
         {/* Search Bar */}
@@ -86,9 +66,12 @@ export default function RoomManagementPage() {
               onChange={(e) => setQuery(e.target.value)}
               className="w-full md:w-1/2 bg-gray-200 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[#1D3C6A]"
             />
-            <button type="button">
-              <Image alt="search" src="/search.png" width={25} height={25} />
-            </button>
+            <a
+              href="/Inventory/add"
+              className="bg-[#A3502D] hover:bg-[#8B3F22] ml-50 px-6 py-3 rounded text-white font-semibold transition"
+            >
+              neue Inventory?
+            </a>
           </div>
           {/* Sort Dropdown */}
           <div className="flex items-center space-x-3 py-3">

@@ -1,10 +1,15 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
+<img width="1913" height="925" alt="landing page" src="https://github.com/user-attachments/assets/1ef7f074-9861-4c6e-af62-afb556556070" />
+<img width="1912" height="922" alt="Frame 1" src="https://github.com/user-attachments/assets/c8ac8b57-e81a-4109-b399-396a5cf80f07" />
+<img width="1914" height="924" alt="Frame 2" src="https://github.com/user-attachments/assets/dbfbdc76-2af9-4566-9385-90861818e58d" />
+<img width="1912" height="924" alt="rooms" src="https://github.com/user-attachments/assets/8f532793-3bf5-4ba9-a378-027fc9ee1929" />
 
 First, run the development server:
 
 ```bash
+
 npm run dev
 # or
 yarn dev

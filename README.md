@@ -4,7 +4,8 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 First, run the development server:
 
-```bash
+```bash<img width="1913" height="925" alt="landing page" src="https://github.com/user-attachments/assets/42d03dc3-2e4c-4ae7-8d8a-4cb73597e94f" />
+
 npm run dev
 # or
 yarn dev
